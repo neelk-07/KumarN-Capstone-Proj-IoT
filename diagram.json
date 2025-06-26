@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp32", "top": -91.3, "left": -5, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": 48.3,
+      "left": -101.4,
+      "attrs": { "temperature": "26.3", "humidity": "60.2" }
+    },
+    {
+      "type": "wokwi-analog-sensor",
+      "id": "co2sensor",
+      "top": -70,
+      "left": 190,
+      "attrs": { "label": "Air Quality", "value": "768" }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "levelswitch",
+      "top": -14.8,
+      "left": 185.5,
+      "attrs": { "switch": "up" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "alertled",
+      "top": -51.6,
+      "left": -92.2,
+      "attrs": { "color": "red", "flip": "" }
+    }
+  ],
+  "connections": [
+    [ "esp32:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp32:RX0", "$serialMonitor:TX", "", [] ],
+    [ "dht:VCC", "esp32:3V3", "red", [] ],
+    [ "dht:GND", "esp32:GND", "black", [] ],
+    [ "dht:SDA", "esp32:D13", "green", [] ],
+    [ "co2sensor:VCC", "esp32:3V3", "red", [] ],
+    [ "co2sensor:GND", "esp32:GND", "black", [] ],
+    [ "co2sensor:SIG", "esp32:34", "blue", [] ],
+    [ "levelswitch:1", "esp32:GND", "black", [] ],
+    [ "levelswitch:2", "esp32:D5", "yellow", [] ],
+    [ "alertled:ANODE", "esp32:D12", "orange", [] ],
+    [ "alertled:CATHODE", "esp32:GND", "black", [] ]
+  ],
+  "dependencies": {}
+}
