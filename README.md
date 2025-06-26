@@ -1,1 +1,1 @@
-# KumarN-Capstone-Proj-IoT
+# NFT Hydroponic Monitoring System
