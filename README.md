@@ -15,7 +15,7 @@ This project is a simulated IoT system designed to monitor environmental paramet
    `git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git`  
 
 2. Open Wokwi Simulation  
-   - Go to [Wokwi]([https://wokwi.com](https://wokwi.com/projects/new/choose-board/esp32])  
+   - Go to [Wokwi](https://wokwi.com/projects/new/choose-board/esp32)  
    - Select Arduino
    - Replace the default Wokwi `diagram.json` and `sketch.ino` files with the ones from this repository
    - Go into the **Library Manager**, click the **plus (+)** icon, then search for and add the following libraries:  
