@@ -12,7 +12,7 @@ This project is a simulated IoT system designed to monitor environmental paramet
 
 ## Setup Guide
 1. Clone the repository  
-   `git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git`  
+   `git clone https://github.com/neelk-07/KumarN-Capstone-Proj-IoT.git`  
 
 2. Open Wokwi Simulation  
    - Go to [Wokwi](https://wokwi.com/projects/new/choose-board/esp32)  
@@ -39,6 +39,54 @@ This project is a simulated IoT system designed to monitor environmental paramet
    - Open Serial Monitor to confirm data is being sent  
    - View your Adafruit IO dashboard live at  
      `https://io.adafruit.com/neelkmr/dashboards/nft-hydroponic-monitor`  
+
+## Setup Guide
+
+1. **Open Wokwi Simulation**
+   - Go to [Wokwi](https://wokwi.com/projects/new/choose-board/esp32)  
+   - Create a new project with an ESP32 board
+   - Replace the default `sketch.ino` and `diagram.json` with the versions from this repository
+
+2. **Install Required Libraries**
+   - Click the **Library Manager (+)** icon on the left
+   - Search for and add:
+     - "DHT sensor library"
+     - "Adafruit MQTT Library"
+     - "Adafruit Unified Sensor"
+
+3. **Set Up Adafruit IO**
+   - Sign in at [https://io.adafruit.com](https://io.adafruit.com)
+   - Go to **My Key** to get your:
+     - Username
+     - AIO Key
+
+4. **Edit Code with Your Credentials**
+   - In `sketch.ino`, update:
+     ```cpp
+     #define IO_USERNAME "your_username"
+     #define IO_KEY "your_aio_key"
+     ```
+
+5. **Run the Simulation**
+   - Click the **Play** button in Wokwi
+   - Open the **Serial Monitor** to verify connection and publishing
+   - After a few seconds, you’ll see sensor data in your Adafruit IO feeds
+
+6. **(Optional) Create a Dashboard**
+   - Go to **Dashboards → Create a New Dashboard → Name it NFT Hydroponic Monitor**
+   - Add blocks (gauge, chart, text, etc.) and connect them to:
+     - temperature
+     - humidity
+     - co2
+     - water
+     - alert
+     - light
+   - Feeds are created automatically when data is first sent
+It should look something like this:
+
+
+
+
 
 ## Testing Performed
 - Normal sensor readings  
