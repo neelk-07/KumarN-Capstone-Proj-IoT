@@ -25,13 +25,6 @@ This project is a simulated IoT system designed to monitor environmental paramet
      
 3. Set Up Adafruit IO  
    - Create an account at https://io.adafruit.com  
-   - Create the following feeds:  
-     - `capstone-feeds.temperature`  
-     - `capstone-feeds.humidity`  
-     - `capstone-feeds.co2`  
-     - `capstone-feeds.water`  
-     - `capstone-feeds.alert`  
-     - `capstone-feeds.light`  
    - Navigate to **My Key** in your Adafruit IO dashboard and copy your **AIO Key** and **Username**
 
 4. Adjust Code  
@@ -45,7 +38,7 @@ This project is a simulated IoT system designed to monitor environmental paramet
    - Press the play button in Wokwi  
    - Open Serial Monitor to confirm data is being sent  
    - View your Adafruit IO dashboard live at  
-     `https://io.adafruit.com/YOUR_USERNAME/dashboards/YOUR_DASHBOARD_NAME`  
+     `https://io.adafruit.com/neelkmr/dashboards/nft-hydroponic-monitor`  
 
 ## Testing Performed
 - Normal sensor readings  
