@@ -45,7 +45,7 @@ This project is a simulated IoT system designed to monitor environmental paramet
 - Simulated low water and high CO₂ trigger alerts  
 - Dashboard updates every 15 seconds  
 - Visual alerts via LED and Adafruit indicator blocks
-- 
+  
 ## File Structure
 ├── sketch.ino # Main ESP32 program
 ├── diagram.json # Wokwi simulation configuration
