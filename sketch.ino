@@ -1,4 +1,3 @@
-
 // Author: Neel Kumar
 // Project: NFT Hydroponics Monitoring System
 // Platform: ESP32 + Wokwi + Adafruit IO
@@ -16,7 +15,7 @@ const char* ssid = "Wokwi-GUEST";
 #define IO_SERVER       "io.adafruit.com"
 #define IO_PORT         1883
 #define IO_USERNAME     "neelkmr"
-#define IO_KEY          "aio_rETw52sJjhJNST4AnAI8azZiDr9i"
+#define IO_KEY          "aio_InJN46rpqb2FwybclHJq0ukjzW43"
 
 // Sensor and component pins
 #define PIN_DHT         13
@@ -73,16 +72,29 @@ void connectToMQTT() {
 }
 
 void loop() {
-  connectToMQTT();
+  if (WiFi.status() != WL_CONNECTED) {
+    Serial.println("WiFi disconnected! Reconnecting...");
+    connectToWiFi();
+  }
+
+  // Reconnect to MQTT if needed
+  if (!mqttClient.connected()) {
+    Serial.println("MQTT disconnected! Reconnecting...");
+    connectToMQTT();
+  }
 
   float temperature   = environmentSensor.readTemperature();
   float humidity      = environmentSensor.readHumidity();
-  int co2Level        = analogRead(PIN_CO2) / 4;
+  static int fakeCO2 = 180;
+  fakeCO2 += random(-10, 10); // simulate drift
+  fakeCO2 = constrain(fakeCO2, 150, 400);
+  int co2Level = fakeCO2;
   int waterLow        = digitalRead(PIN_LEVELSWITCH);
   bool alarmActive    = (co2Level > 200 || waterLow);
 
   digitalWrite(PIN_INDICATOR, alarmActive);
 
+  // Publish data
   Serial.print("Publishing temperature... ");
   Serial.println(feedTemperature.publish(temperature) ? "OK" : "FAIL");
 
@@ -100,9 +112,6 @@ void loop() {
 
   Serial.print("Publishing light status... ");
   Serial.println(feedLight.publish("1") ? "OK" : "FAIL");
-
-  mqttClient.processPackets(10000);
-  mqttClient.ping();
 
   delay(15000);
 }
